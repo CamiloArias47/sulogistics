@@ -1,6 +1,8 @@
 # enviroment variables
 .env
 venv
+*~
+*.pyc
 
 # dependencies
 /frontend/node_modules
