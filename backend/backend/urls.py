@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from users_api_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/users/', include('users_api_app.urls'))
+    path('api/', include('users_api_app.urls')),
+    path('api/users/subordinates/<int:pk>/', views.UserApiView.as_view())
 ]

@@ -1,4 +1,5 @@
 from rest_framework.views import APIView
+from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import UserProfileSerializer
@@ -7,7 +8,8 @@ from .usercontroller import UserController
 
 class UserApiView(APIView):
     """
-        handler el endpoint api/users/<pk>
+        handler el endpoint api/users/subordinates/<int:pk>/
+        responde con el usuario <int:pk> y sus subordinados
     """
     serializer_class = UserProfileSerializer
 
@@ -18,20 +20,11 @@ class UserApiView(APIView):
         user_controller.get_worker(pk)
         user_serialized = self.serializer_class(user)
         return Response(user_serialized.data)
-    
 
-    def post(self, request):
-        """
-            Crea un usuario
-        """
-        serializer = self.serializer_class(data=request.data)
 
-        if serializer.is_valid():
-            name = serializer.validated_data.get('name')
-            message = f'Hello {name}'
-            return Response({'message': message})
-        else:
-            return Response(
-                serializer.errors,
-                status=status.HTTP_400_BAD_REQUEST
-            )
+class UserApiViewSet(viewsets.ModelViewSet):
+    """
+        Controlador api de usuarios, forma rapida para gestionar usuarios
+    """
+    serializer_class = UserProfileSerializer
+    queryset = UserProfileSerializer.Meta.model.objects.filter(is_active = True)
