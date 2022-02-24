@@ -9,7 +9,7 @@ from .usercontroller import UserController
 class UserApiView(APIView):
     """
         handler el endpoint api/users/subordinates/<int:pk>/
-        responde con el usuario <int:pk> y sus subordinados
+        responde con el usuario <int:pk>, su jefe y sus subordinados
     """
     serializer_class = UserProfileSerializer
 
@@ -17,9 +17,18 @@ class UserApiView(APIView):
         
         user = UserProfile.objects.filter(id = pk).first()
         user_controller = UserController()
-        user_controller.get_worker(pk)
-        user_serialized = self.serializer_class(user)
-        return Response(user_serialized.data)
+        result = user_controller.get_worker(pk)
+        if result is not None:
+            user_serialized = self.serializer_class(user)
+            res = {
+                'user':user_serialized.data,
+                'boss' : result['boss'],
+                'subordinates': result['subordinates'],
+                'subtes_tsales': result['subordinates_total_sales']
+            }
+            return Response(res, status=status.HTTP_200_OK)
+
+        return Response({'msg':'No existe el usuario'}, status = status.HTTP_404_NOT_FOUND)
 
 
 class UserApiViewSet(viewsets.ModelViewSet):
