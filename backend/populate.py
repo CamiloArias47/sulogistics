@@ -1,5 +1,8 @@
+from pathlib import Path
 import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.settings")
+
+BASE_DIR = Path(__file__).resolve()
 
 import django
 django.setup()
@@ -13,9 +16,14 @@ def populate():
         Read the BDprueba.csv file and create an user per row 
         execute in console
     """
-    with open('./BDprueba.csv', 'r', encoding='utf-8') as f:
+    dir_file = os.path.join(os.path.dirname(BASE_DIR), "BDprueba.csv" )
+    print("[populate] Searching file...")
+    print(dir_file)
+    with open( dir_file, 'r', encoding='utf-8') as f:
         formated_data = []
         total_lines = 0
+
+        print("[populate] Saving registers...")
 
         for linerow in f:
             row = {}
@@ -71,6 +79,7 @@ def populate():
                     picture=picture,
                     phone=phone
                 )
+                print("[populate] Saving: "+name+"...")
                 q.save()
                 formated_data.append(row)
 
@@ -79,7 +88,7 @@ def populate():
 
 def run():
     populate()
-
+    print("[populate] Finished!")
 
 if __name__ == '__main__':
     run()
