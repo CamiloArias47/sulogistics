@@ -5,8 +5,9 @@ from rest_framework import status
 from .serializers import UserProfileSerializer
 from .models import UserProfile
 from .usercontroller import UserController
+from .authentication import Authentication
 
-class UserApiView(APIView):
+class UserApiView(Authentication, APIView):
     """
         handler el endpoint api/users/subordinates/<int:pk>/
         responde con el usuario <int:pk>, su jefe y sus subordinados
@@ -31,7 +32,7 @@ class UserApiView(APIView):
         return Response({'msg':'No existe el usuario'}, status = status.HTTP_404_NOT_FOUND)
 
 
-class UserApiViewSet(viewsets.ModelViewSet):
+class UserApiViewSet(Authentication, viewsets.ModelViewSet):
     """
         Controlador api de usuarios, forma rapida para gestionar usuarios
     """
