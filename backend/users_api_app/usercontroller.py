@@ -1,5 +1,3 @@
-from itertools import count
-from tkinter import N
 from .models import UserProfile
 from .serializers import UserProfileSerializer
 
