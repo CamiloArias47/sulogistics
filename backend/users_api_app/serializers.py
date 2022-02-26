@@ -10,4 +10,22 @@ class UserProfileSerializer(serializers.ModelSerializer):
 class UserTokenSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
-        fields = ('name', 'lastname', 'email')
+        fields = (
+            'id',
+            'name', 
+            'lastname', 
+            'email', 
+            'employee_id',
+            'national_id',
+            'birthday',
+            'gender',
+            'start_date',
+            'position',
+            'boss',
+            'zone',
+            'city',
+            'department',
+            'sales',
+            'picture',
+            'phone',
+        )

@@ -9,7 +9,9 @@ export default function Layout() {
     return (
       <div>
          <Header />
-         <Outlet />
+         <section className="pagesection">
+            <Outlet />
+         </section>
       </div>
     );
   }

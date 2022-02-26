@@ -1,0 +1,128 @@
+/** Cards */
+.card{
+    border-radius: 10px;
+    background: var(--white);
+    padding: 1%;
+    margin: 4px;
+    position: relative;
+}
+
+.card.card--personalid{
+    border: 2px solid var(--green);
+}
+
+.card--personalid .card__pill{
+    border-radius: 10px;
+    background: var(--green);
+    padding: 1% 2%;
+    position: absolute;
+    top: -3%;
+    right: -1%;
+    color: var(--white);
+    font-size: var(--sm);
+    font-weight: 600;
+}
+
+.card_title{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.card__unameid{
+    display: flex;
+    flex-direction: column;
+}
+
+.card__uname{
+    font-size: var(--lg);
+    font-weight: 500;
+}
+.card__content{
+    display: flex;
+}
+.card__uinfo{
+    width: 70%;
+    padding: 1%;
+}
+
+.card__upicture{
+    width: 30%;
+    position: relative;
+    height: max-content;
+}
+.card__upicture img{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.card__sales{
+    position: absolute;
+    bottom: -2px;
+    right: 0;
+    padding: 4px 8px;
+    background: var(--green);
+    border-radius: 10px;
+    color: var(--white);
+    font-weight: 500;
+    font-size: var(--lg);
+    display: flex;
+    width: max-content;
+}
+
+.card__sales img{
+    max-width: 22px;
+    padding-right: 4px;
+    border-radius: 3px;
+}
+
+.card__list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--veryDimGray);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 12px;
+    overflow: hidden;
+}
+
+.card__list li{
+    padding: 4px;
+    border-bottom: 1px solid var(--veryDimGray);
+    text-overflow: ellipsis;
+    overflow: hidden!important;
+}
+
+.card__list li > span{
+    font-weight: 600;
+}
+
+.card__list li:last-child{
+    border-bottom: none;
+}
+
+.card__list--table li{
+   display: flex;  
+   justify-content: space-around;
+}
+
+.card__item--detail{
+    justify-content: space-between !important;
+}
+
+.card__item--detail span{
+    font-weight: 400 !important;
+}
+
+.card__item--detail span > a,
+.card__list li > a{
+    text-decoration: none;
+    color: var(--darkgray);
+}
+
+.card__item--detail span > a:hover,
+.card__list li > a:hover{
+    text-decoration: underline;
+    color: var(--darkgray);
+}

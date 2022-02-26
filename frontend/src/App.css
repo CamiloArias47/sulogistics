@@ -6,6 +6,7 @@
   --error:#d12d2d;
   --gray:#f4f6f8;
   --graymd: #f0f4f7;
+  --veryDimGray:#e7e7e7;
   --darkgray:#2c3a4e;
   --sm: 14px;
   --md: 16px;
@@ -92,14 +93,8 @@ body{
   }
 }
 
-/** Dashboard Page */
 
-body.dashboard{
-  background: var(--gray);
-  color: var(--darkgray);
-  padding: 0;
-}
-
+/** Header */
 .header{
   background: rgb(37,50,69);
   background: linear-gradient(134deg, var(--primary) 51%, rgba(81,119,175,1) 100%);
@@ -204,3 +199,56 @@ body.dashboard{
     border-bottom: 2px solid var(--error);
   }
 }
+
+@media (min-width : 1024px){
+  .header__userinfo h1{
+    letter-spacing: 8px;
+  }
+}
+
+
+/** Dashboard Page */
+
+body.dashboard{
+  background: var(--gray);
+  color: var(--darkgray);
+  padding: 0;
+}
+
+.pagesection{
+  padding: 4% 12px;
+}
+
+.dashboardhome{ 
+  color: var(--darkgray);
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboardhome__block{
+  width: 100%;
+}
+
+.dashboardhome--title h1{
+  display: flex;
+  align-items: center;
+}
+
+.dashboardhome--title h1 img{
+  padding-right: 2%;
+}
+
+@media (min-width : 768px){
+  .pagesection{
+    padding: 4% 5.6%;
+  }
+  .dashboardhome{
+    flex-flow: row wrap;
+  }
+  .dashboardhome--userinfo,
+  .dashboardhome--subordinates{
+    width: 50%;
+  }
+}
+
+/** cards */

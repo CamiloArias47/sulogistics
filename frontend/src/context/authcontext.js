@@ -8,11 +8,15 @@ export default function AuthProvider({ children }) {
   const loginRoute = `${api}/login`
 
   let localUser = null
+  let localToken = ''
+
   if( localStorage.getItem('token') ){
     localUser = JSON.parse( localStorage.getItem('user') )
+    localToken =  localStorage.getItem('token') 
   }
 
-  let [user, setUser] = React.useState(localUser);
+  const [user, setUser] = React.useState(localUser)
+  const [token, setToken] = React.useState(localToken)
   
   /**
    * realiza una peticion post a la api de login
@@ -42,6 +46,7 @@ export default function AuthProvider({ children }) {
             })
             .then( data => {
               setUser(data.user)
+              setToken(data.token)
             })
   };
 
@@ -57,11 +62,12 @@ export default function AuthProvider({ children }) {
                 localStorage.removeItem('token')
                 localStorage.removeItem('user')
                 setUser(null)
+                setToken('')
               }
             })
   };
 
-  let value = { user, signin, signout };
+  let value = { user, token, signin, signout };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

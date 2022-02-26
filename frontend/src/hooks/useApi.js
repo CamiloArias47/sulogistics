@@ -1,18 +1,21 @@
 import {useState, useEffect} from 'react'
 
-export const useApi = ({route, method = 'GET', body = {} }) => {
-    const [loading, setLoading] = useState(false)
+export const useApi = ({route, method = 'GET', body = {}, headers = {} }) => {
+  const [loading, setLoading] = useState(false)
 	const [data, setData] = useState() 
     
-    body = JSON.stringify(body)
+  body = JSON.stringify(body)
 
-    const options = {
-        method,
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body
-    }
+  const options = {
+      method,
+      headers: {
+        'Content-Type': 'application/json',
+        ...headers,
+      },
+      body
+  }
+
+  if(method === 'GET') delete options.body
 	
 	useEffect(() => {
 	  setLoading(true)
