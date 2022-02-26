@@ -16,17 +16,17 @@ export default function Dashboard(){
     const route = `${routeApi}/api/users/subordinates/${id}/`
     const headers = {Authorization: 'Token '+token}
 
-    const {loading, data} = useApi({route, headers })
+    //tine una propiedad loading para poner un loader
+    const { data} = useApi({route, headers })
 
     useEffect( () => {
         if( data ){
-            console.log({data})
            setUser(data.user)  
            setTotalSales(data.subtes_tsales)
            setDataBoss(data.boss)
            setSubordinates(data.subordinates)
         } 
-    },[data, setUser])
+    },[data, setUser, setTotalSales, setDataBoss, setSubordinates])
 
 
     const loadEmployeedData = (id) => {

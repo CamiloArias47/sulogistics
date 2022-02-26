@@ -71,6 +71,11 @@ function employeddReducer(state, action){
                 subordinates: action.subordinates
             }
         }
+        default: {
+            return{
+                ...state
+            }
+        }
     }
 }
 
@@ -106,6 +111,7 @@ export default function EmployeedProvider({ children }) {
             setDataBoss,
             setSubordinates
         }),
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         [state]
     )
     

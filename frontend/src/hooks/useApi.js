@@ -25,7 +25,7 @@ export const useApi = ({route, method = 'GET', body = {}, headers = {} }) => {
 	      setData(json)
 	      setLoading(false)
 	    })
-	 
+	 // eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
     return {loading, data}

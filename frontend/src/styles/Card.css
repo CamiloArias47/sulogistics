@@ -115,14 +115,17 @@
     font-weight: 400 !important;
 }
 
-.card__item--detail span > a,
-.card__list li > a{
+.card__item--detail span > button,
+.card__list li > button{
     text-decoration: none;
     color: var(--darkgray);
+    background: transparent;
+    border: none;
 }
 
-.card__item--detail span > a:hover,
-.card__list li > a:hover{
+.card__item--detail span > button:hover,
+.card__list li > button:hover{
     text-decoration: underline;
     color: var(--darkgray);
+    cursor: pointer;
 }

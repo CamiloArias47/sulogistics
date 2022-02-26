@@ -49,9 +49,9 @@ function ListDetail({name, lastname, lastname2, id, sales, loadEmployeedData}){
     return(
         <li className="card__item card__item--detail">
             <span>
-                <a href="#" onClick={handlerClick}>
+                <button onClick={handlerClick}>
                     {name} {lastname} {lastname2}
-                </a>
+                </button>
             </span>
             <span>{ formatPrice(sales) }</span>
         </li>

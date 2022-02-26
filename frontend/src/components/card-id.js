@@ -35,7 +35,7 @@ export default function CardId({loadEmployeedData}){
             <div className="card card--personalid">
                 <span className='card__pill'>activo</span>
                 <div className='card_title'>
-                    <img src="/img/icons/id-card.svg" width="45" height="32" className='card__icon'/>
+                    <img src="/img/icons/id-card.svg" alt="card icon" width="45" height="32" className='card__icon'/>
                     <div className='card__unameid'>
                         <span className='card__uname'>{name} {lastname} {lastname2}</span>
                         <span className='card__eid'># {employee_id}</span>
@@ -65,9 +65,9 @@ export default function CardId({loadEmployeedData}){
                                 <span>Jefe: </span>
                                 {
                                   (boss === user.employee_id)
-                                    ? <a href="#" onClick={loadMyProfile}>
+                                    ? <button onClick={loadMyProfile}>
                                         {dataBoss.name} {dataBoss.lastname} {dataBoss.lastname2}
-                                      </a>
+                                      </button>
                                     : <span>{dataBoss.name} {dataBoss.lastname} {dataBoss.lastname2}</span> 
                                 }
                             </li>
@@ -75,7 +75,7 @@ export default function CardId({loadEmployeedData}){
 
                     </div>
                     <div className='card__upicture'>
-                        <img src={`/img/avatars/${picture}`} alt="User image" />
+                        <img src={`/img/avatars/${picture}`} alt="User Avatar" />
                         <span className='card__sales'>
                              <img src='/img/icons/co.svg' alt="cop" width="22" height="22"/>
                              { 
