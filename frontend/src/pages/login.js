@@ -6,10 +6,7 @@ import { Spinner } from "../icons/index";
 
 export default function Login(){
     let navigate = useNavigate();
-    let location = useLocation();
     let auth = useAuth();
-
-    let from = location.state?.from?.pathname || "/dashboard";
 
     const [mail, setMail] = useState('')
     const [password, setPassword] = useState('')
