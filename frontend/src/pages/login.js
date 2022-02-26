@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {useAuth} from '../context/authcontext'
 import { Spinner } from "../icons/index";
 
@@ -17,7 +17,7 @@ export default function Login(){
     useEffect( () => {
         if(auth.user) 
             navigate('/dashboard') 
-    },[auth])
+    },[auth, navigate])
 
     const handleSubmit = event => {
         event.preventDefault()
