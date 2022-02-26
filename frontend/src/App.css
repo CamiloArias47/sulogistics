@@ -4,9 +4,16 @@
   --secondary: #2b4c73;
   --green:#98ca3f;
   --error:#d12d2d;
+  --gray:#f4f6f8;
+  --graymd: #f0f4f7;
+  --darkgray:#2c3a4e;
   --sm: 14px;
   --md: 16px;
   --lg: 18px
+}
+
+html{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 
 body{
@@ -16,6 +23,7 @@ body{
   padding: 0 18px;
 }
 
+/** LOGIN PAGE */
 
 .login{
   width: 100%;
@@ -81,5 +89,118 @@ body{
 @media (min-width: 1024px){
   .login{
     width: 30%;
+  }
+}
+
+/** Dashboard Page */
+
+body.dashboard{
+  background: var(--gray);
+  color: var(--darkgray);
+  padding: 0;
+}
+
+.header{
+  background: rgb(37,50,69);
+  background: linear-gradient(134deg, var(--primary) 51%, rgba(81,119,175,1) 100%);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  padding: 0 12px;
+}
+
+.header__top{
+  display: none;
+}
+
+.navbarlist{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbarlist__item{
+  padding: 2.5% 1%;
+  border-bottom: 2px solid transparent;
+}
+
+.navbarlist__item:hover{
+  cursor: pointer;
+}
+
+.navbarlist__item a{
+  text-decoration: none;
+  color: var(--white);
+}
+
+
+.navbarlist__item.navbarlist__item--btnclose button{ 
+  background: transparent;
+  border: none;
+  font-size: var(--sm);
+}
+
+.navbarlist__item.navbarlist__item--btnclose button:hover{ 
+  cursor: pointer;
+}
+
+@media (min-width : 768px){
+  .header{
+    padding: 0 5.6%;
+  }
+
+  .header__top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5.6% 0 2%;
+  }
+
+  .header__userinfo{
+    display: flex;
+    flex-direction: column;
+  }
+  .header__userinfo h1{
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    overflow: hidden!important;
+    letter-spacing: 4px;
+    text-overflow: ellipsis;
+  }
+  .header__userinfo span{
+    font-size: var(--sm);
+    color: var(--gray);
+  }
+
+  .header__verified{
+    display: flex;
+    align-items: center;
+  }
+  .header__verified span{
+    padding-left: 12px;
+    font-weight: 500;
+  }
+  .navbar{
+    background: var(--white);
+    border-radius: 5px;
+    padding: 0 3%;
+    position: relative;
+    bottom: -10px;
+    color: var(--darkgray);
+    box-shadow: 0 0 1rem 0.5rem rgb(8 19 25 / 15%);
+  }
+  .navbarlist__item a{
+    color: var(--darkgray);
+  }
+  .navbarlist__item:hover{
+    background: var(--graymd);
+    border-bottom: 2px solid var(--green);
+  }
+  .navbarlist__item.navbarlist__item--btnclose:hover{ 
+    border-bottom: 2px solid var(--error);
   }
 }

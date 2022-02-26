@@ -1,21 +1,15 @@
-import {
-    Link,
-    Outlet,
-} from "react-router-dom"
+import { Outlet } from "react-router-dom"
+import Header from './components/header'
 
 export default function Layout() {
+
+    const bodyElm = document.getElementsByTagName('body')
+    bodyElm[0].classList.add('dashboard')
+
     return (
       <div>
-        <ul>
-          <li>
-            <Link to="/">Login Page</Link>
-          </li>
-          <li>
-            <Link to="/dashboard">Dashboard Page</Link>
-          </li>
-        </ul>
-  
-        <Outlet />
+         <Header />
+         <Outlet />
       </div>
     );
   }

@@ -1,5 +1,4 @@
 import * as React from "react";
-import { fakeAuthProvider } from "../auth";
 
 let AuthContext = React.createContext(null);
 
@@ -14,7 +13,12 @@ export default function AuthProvider({ children }) {
   }
 
   let [user, setUser] = React.useState(localUser);
-
+  
+  /**
+   * realiza una peticion post a la api de login
+   * si es exitoso el login se guarda el token 
+   * en el loclaStorage
+   */
   let signin = ({password, username}) => {
 
     const options = {
@@ -41,11 +45,20 @@ export default function AuthProvider({ children }) {
             })
   };
 
-  let signout = (callback) => {
-    return fakeAuthProvider.signout(() => {
-      setUser(null);
-      callback();
-    });
+
+  let signout = () => {
+    const token = localStorage.getItem('token')
+    const logoutRoute = `${api}/logout?token=${token}`
+
+    return fetch(logoutRoute)
+            .then( resp => resp.json() )
+            .then(data => {
+              if(data.msg === 'loged out'){
+                localStorage.removeItem('token')
+                localStorage.removeItem('user')
+                setUser(null)
+              }
+            })
   };
 
   let value = { user, signin, signout };

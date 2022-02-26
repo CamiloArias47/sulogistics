@@ -14,6 +14,9 @@ export default function Login(){
     const [error, setError] = useState(false)
     const [errorMsg, setErrorMsg] = useState('')
 
+    const bodyElm = document.getElementsByTagName('body')
+    bodyElm[0].classList.remove('dashboard')
+
     useEffect( () => {
         if(auth.user) 
             navigate('/dashboard') 
