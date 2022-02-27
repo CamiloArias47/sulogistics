@@ -40,14 +40,18 @@
 }
 .card__content{
     display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .card__uinfo{
-    width: 70%;
+    order : 2;
+    width: 100%;
     padding: 1%;
 }
 
 .card__upicture{
-    width: 30%;
+    order:1;
+    width: 50%;
     position: relative;
     height: max-content;
 }
@@ -59,7 +63,7 @@
 .card__sales{
     position: absolute;
     bottom: -2px;
-    right: 0;
+    right: -10px;
     padding: 4px 8px;
     background: var(--green);
     border-radius: 10px;
@@ -67,11 +71,13 @@
     font-weight: 500;
     font-size: var(--lg);
     display: flex;
+    align-items: center;
     width: max-content;
 }
 
 .card__sales img{
-    max-width: 22px;
+    max-width: 13px;
+    max-height: 13px;
     padding-right: 4px;
     border-radius: 3px;
 }
@@ -128,4 +134,34 @@
     text-decoration: underline;
     color: var(--darkgray);
     cursor: pointer;
+}
+
+@media (min-width : 768px){
+    .card__content{
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .card__uinfo{
+        order : 1;
+        width: 70%;
+    }
+
+    .card__upicture{
+        order : 2;
+        width: 30%;
+    }
+
+    .card__sales{
+        right: 0;
+        font-weight: 400;
+        font-size: var(--md);
+    }
+}
+
+@media (min-width : 1024px){
+    .card__sales{
+        font-weight: 500;
+        font-size: var(--lg);
+    }
 }

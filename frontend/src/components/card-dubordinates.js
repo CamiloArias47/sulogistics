@@ -8,6 +8,8 @@ export default function CardSUbordinates(){
     const { subordinates } = useEmployee() 
     const { getEmployee } = useGetEmployee()
 
+    if ( subordinates.length === 0) return ''
+
     return(
         <div className="dashboardhome__block dashboardhome--subordinates">
             <div className="card">
@@ -20,19 +22,17 @@ export default function CardSUbordinates(){
                         <span>Ventas</span>
                     </li>
                     {   
-                        subordinates 
-                            ? subordinates.map( sub => {
-                                    return <ListDetail 
-                                                key={sub.id}      
-                                                name={sub.name} 
-                                                lastname={sub.lastname} 
-                                                lastname2={sub.lastname2}
-                                                sales={sub.sales}
-                                                id={sub.id}
-                                                loadEmployeedData={getEmployee}
-                                            />
-                                })
-                            :''
+                        subordinates.map( sub => {
+                                return <ListDetail 
+                                            key={sub.id}      
+                                            name={sub.name} 
+                                            lastname={sub.lastname} 
+                                            lastname2={sub.lastname2}
+                                            sales={sub.sales}
+                                            id={sub.id}
+                                            loadEmployeedData={getEmployee}
+                                        />
+                            })
                     }
                 </ul>
             </div>

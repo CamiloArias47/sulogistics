@@ -78,7 +78,7 @@ export default function CardId(){
                     <div className='card__upicture'>
                         <img src={`/img/avatars/${picture}`} alt="User Avatar" />
                         <span className='card__sales'>
-                             <img src='/img/icons/co.svg' alt="cop" width="22" height="22"/>
+                             <img src='/img/icons/co.svg' alt="cop" width="13" height="13"/>
                              { 
                               position === 'Ejecutivo Comercial'
                                 ? formatPrice(sales)

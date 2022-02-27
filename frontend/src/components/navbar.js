@@ -12,7 +12,7 @@ export default function NavBar(){
             <ul className='navbarlist'>
                 <li className='navbarlist__item'>
                     <button onClick={ () => { getEmployee(id) } }>
-                        Dashboard
+                        Mi Perfil
                     </button>
                 </li>
                 <li className='navbarlist__item navbarlist__item--btnclose'>

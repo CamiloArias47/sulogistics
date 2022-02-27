@@ -27,7 +27,9 @@ class UserController(object):
             subordinates = UserProfile.objects.filter(boss = eid)
             for subordinate in subordinates:
                 subordinates_srzed.append( UserProfileSerializer(subordinate).data )
-                total_sales+=subordinate.sales
+                # total_sales+=subordinate.sales
+            
+            total_sales = self.get_total_sales(subordinates)
 
             return {
                 'subordinates':subordinates_srzed,
@@ -36,6 +38,33 @@ class UserController(object):
                 }
         
         return None
+
+    def get_total_sales(self, subor):
+        total_sales = 0
+
+        def sum(subordinates):
+            nonlocal  total_sales 
+            print('::::inicio::::::')
+            total = subordinates.count()-1
+            i = 0
+            while i <= total :
+                eid = subordinates[i].employee_id
+                name = subordinates[i].name
+                lastname = subordinates[i].lastname
+                sales = subordinates[i].sales
+                print('name',name, lastname)
+                print('sales',sales)
+                hijos = UserProfile.objects.filter(boss = eid)
+                total_sales+= sales
+                i+=1
+                if hijos.count() > 0:
+                    print('tengo hijos...')
+                    sum(hijos[:hijos.count()-1])
+        
+        sum(subor)
+        # print('value final',total_sales)
+        return total_sales
+
 
 
 
