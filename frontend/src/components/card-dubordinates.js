@@ -1,11 +1,12 @@
-import { useEmployee } from 'src/context/employeed-context';
+import { useEmployee, useGetEmployee } from 'src/context/employeed-context';
 import { formatPrice } from 'src/utils';
 
 
 
-export default function CardSUbordinates({loadEmployeedData}){
+export default function CardSUbordinates(){
 
     const { subordinates } = useEmployee() 
+    const { getEmployee } = useGetEmployee()
 
     return(
         <div className="dashboardhome__block dashboardhome--subordinates">
@@ -28,7 +29,7 @@ export default function CardSUbordinates({loadEmployeedData}){
                                                 lastname2={sub.lastname2}
                                                 sales={sub.sales}
                                                 id={sub.id}
-                                                loadEmployeedData={loadEmployeedData}
+                                                loadEmployeedData={getEmployee}
                                             />
                                 })
                             :''
@@ -41,6 +42,7 @@ export default function CardSUbordinates({loadEmployeedData}){
  
 
 function ListDetail({name, lastname, lastname2, id, sales, loadEmployeedData}){
+    
 
     const handlerClick = event => {
         event.preventDefault()

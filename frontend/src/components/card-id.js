@@ -1,8 +1,9 @@
 import { useAuth } from 'src/context/authcontext';
-import { useEmployee } from 'src/context/employeed-context';
+import { useEmployee, useGetEmployee} from 'src/context/employeed-context';
 import { formatPrice, formatDate, formatNum } from 'src/utils'
 
-export default function CardId({loadEmployeedData}){
+export default function CardId(){
+    const { getEmployee } = useGetEmployee()
     const { name,
             lastname,
             lastname2,
@@ -27,7 +28,7 @@ export default function CardId({loadEmployeedData}){
 
     const loadMyProfile = event => {
         event.preventDefault()
-        loadEmployeedData(user.id)
+        getEmployee(user.id)
     }
 
     return(

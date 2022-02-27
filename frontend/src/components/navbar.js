@@ -1,15 +1,19 @@
 import {useAuth} from '../context/authcontext'
-import { Link } from 'react-router-dom'
+import { useGetEmployee } from 'src/context/employeed-context';
 
 export default function NavBar(){
 
     const auth = useAuth()
+    const { getEmployee } = useGetEmployee()
+    const { id } = auth.user
 
     return(
         <nav className='navbar'>
             <ul className='navbarlist'>
                 <li className='navbarlist__item'>
-                    <Link to="/dashboard">Dashboard</Link>
+                    <button onClick={ () => { getEmployee(id) } }>
+                        Dashboard
+                    </button>
                 </li>
                 <li className='navbarlist__item navbarlist__item--btnclose'>
                     <button onClick={ () => { auth.signout() }}>

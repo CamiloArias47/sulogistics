@@ -20,6 +20,7 @@ export default function Login(){
     useEffect( () => {
         if(auth.user) 
             navigate('/dashboard') 
+        return false
     },[auth, navigate])
 
     const handleSubmit = event => {

@@ -1,6 +1,8 @@
 import React, { useCallback, useMemo } from 'react'
+import { useAuth } from 'src/context/authcontext'
 
 const EmployeedContext = React.createContext(null);
+const routeApi = process.env.REACT_APP_API_URL
 
 const initialState = {
     name: '',
@@ -120,4 +122,35 @@ export default function EmployeedProvider({ children }) {
 
 export const useEmployee = () => {
     return React.useContext(EmployeedContext);
+}
+
+export const useGetEmployee = () => {
+        const auth = useAuth()
+        const { setUser, setTotalSales, setDataBoss, setSubordinates } = useEmployee()
+
+        function getEmployee(id){
+            const {token} = auth
+            const employedRoute = `${routeApi}/api/users/subordinates/${id}/`
+            const headers = {Authorization: 'Token '+token}
+    
+            const options = {
+                method:'GET',
+                headers: {
+                  'Content-Type': 'application/json',
+                  ...headers,
+                }
+            }
+            return fetch(employedRoute,options)
+                    .then( resp => resp.json() )
+                    .then( data => {
+                        setUser(data.user)  
+                        setTotalSales(data.subtes_tsales)
+                        setDataBoss(data.boss)
+                        setSubordinates(data.subordinates)
+                    })
+        }
+
+        return {
+           getEmployee 
+        }
 }

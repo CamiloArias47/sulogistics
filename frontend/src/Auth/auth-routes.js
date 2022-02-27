@@ -10,7 +10,6 @@ export default function RequireAuth({ children }) {
     let auth = useAuth()
     let location = useLocation()
     const navigator = useNavigate()
-
     useEffect( () => {
       if(!auth.user){
         navigator('/')

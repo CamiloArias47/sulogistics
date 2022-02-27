@@ -122,6 +122,16 @@ body{
   border-bottom: 2px solid transparent;
 }
 
+.navbarlist__item button{
+  background: transparent;
+  border: none;
+  font-size: var(--sm);
+}
+
+.navbarlist__item button:hover{ 
+  cursor: pointer;
+}
+
 .navbarlist__item:hover{
   cursor: pointer;
 }
@@ -131,16 +141,6 @@ body{
   color: var(--white);
 }
 
-
-.navbarlist__item.navbarlist__item--btnclose button{ 
-  background: transparent;
-  border: none;
-  font-size: var(--sm);
-}
-
-.navbarlist__item.navbarlist__item--btnclose button:hover{ 
-  cursor: pointer;
-}
 
 @media (min-width : 768px){
   .header{

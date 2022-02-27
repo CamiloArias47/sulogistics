@@ -1,3 +1,5 @@
+import RequireAuth from './Auth/auth-routes'
+import EmployeedProvider from 'src/context/employeed-context';
 import { Outlet } from "react-router-dom"
 import Header from './components/header'
 
@@ -7,11 +9,13 @@ export default function Layout() {
     bodyElm[0].classList.add('dashboard')
 
     return (
-      <div>
-         <Header />
-         <section className="pagesection">
-            <Outlet />
-         </section>
-      </div>
+      <EmployeedProvider>
+         <RequireAuth>
+            <Header />
+            <section className="pagesection">
+               <Outlet />
+            </section>
+         </RequireAuth>
+      </EmployeedProvider>
     );
   }
