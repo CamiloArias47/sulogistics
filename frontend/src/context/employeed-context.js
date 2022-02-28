@@ -24,7 +24,7 @@ const initialState = {
     phone: '',
     totalSales : 0,
     dataBoss : {},
-    subordinates: []
+    subordinates: [],
 }
 
 //reducer para manejar la información de empleados a mostras
@@ -129,7 +129,7 @@ export const useGetEmployee = () => {
         const { setUser, setTotalSales, setDataBoss, setSubordinates } = useEmployee()
 
         function getEmployee(id){
-            const {token} = auth
+            const {token, user, setSubordinatesId} = auth
             const employedRoute = `${routeApi}/api/users/subordinates/${id}/`
             const headers = {Authorization: 'Token '+token}
     
@@ -147,6 +147,9 @@ export const useGetEmployee = () => {
                         setTotalSales(data.subtes_tsales)
                         setDataBoss(data.boss)
                         setSubordinates(data.subordinates)
+                        if(user.id === id){
+                            setSubordinatesId(data.subordinates_ids)
+                        }
                     })
         }
 

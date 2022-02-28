@@ -17,6 +17,7 @@ export default function AuthProvider({ children }) {
 
   const [user, setUser] = React.useState(localUser)
   const [token, setToken] = React.useState(localToken)
+  const [subordinatesId, setsubordinatesId] = React.useState([])
   
   /**
    * realiza una peticion post a la api de login
@@ -67,7 +68,11 @@ export default function AuthProvider({ children }) {
             })
   };
 
-  let value = { user, token, signin, signout };
+  const setSubordinatesId = (subordinadosId) =>{
+    setsubordinatesId(subordinadosId)
+  }
+
+  let value = { user, token, subordinatesId, signin, signout, setSubordinatesId};
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

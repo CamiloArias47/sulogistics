@@ -25,7 +25,8 @@ class UserApiView(Authentication, APIView):
                 'user':user_serialized.data,
                 'boss' : result['boss'],
                 'subordinates': result['subordinates'],
-                'subtes_tsales': result['subordinates_total_sales']
+                'subtes_tsales': result['subordinates_total_sales'],
+                'subordinates_ids': result['subordinates_ids'],
             }
             return Response(res, status=status.HTTP_200_OK)
 

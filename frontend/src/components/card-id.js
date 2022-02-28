@@ -24,12 +24,14 @@ export default function CardId(){
             dataBoss
     } = useEmployee() 
 
-    const { user } = useAuth()
+    const { user, subordinatesId } = useAuth()
 
-    const loadMyProfile = event => {
+    const loadProfile = event => {
         event.preventDefault()
-        getEmployee(user.id)
+        getEmployee(dataBoss.id)
     }
+
+    const idSubordinateOfLoguesUser = subordinatesId.find( sub => employee_id === sub)
 
     return(
         <div className="dashboardhome__block dashboardhome--userinfo">
@@ -65,8 +67,8 @@ export default function CardId(){
                             <li>
                                 <span>Jefe: </span>
                                 {
-                                  (boss === user.employee_id)
-                                    ? <button onClick={loadMyProfile}>
+                                  (boss === user.employee_id || idSubordinateOfLoguesUser)
+                                    ? <button onClick={loadProfile}>
                                         {dataBoss.name} {dataBoss.lastname} {dataBoss.lastname2}
                                       </button>
                                     : <span>{dataBoss.name} {dataBoss.lastname} {dataBoss.lastname2}</span> 
