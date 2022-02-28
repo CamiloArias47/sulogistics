@@ -126,6 +126,7 @@ body{
   background: transparent;
   border: none;
   font-size: var(--sm);
+  color: var(--white);
 }
 
 .navbarlist__item button:hover{ 
@@ -187,6 +188,9 @@ body{
     bottom: -10px;
     color: var(--darkgray);
     box-shadow: 0 0 1rem 0.5rem rgb(8 19 25 / 15%);
+  }
+  .navbarlist__item button{
+    color: var(--darkgray);
   }
   .navbarlist__item a{
     color: var(--darkgray);

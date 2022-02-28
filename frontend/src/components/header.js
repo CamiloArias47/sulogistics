@@ -7,6 +7,7 @@ export default function Header(){
     let name = (auth.user) ? auth.user.name : ''
     let lastname = (auth.user) ? auth.user.lastname : ''
     let email = (auth.user) ? auth.user.email : ''
+    let position = (auth.user) ? auth.user.position : ''
 
     return(
         <header className="header">
@@ -14,7 +15,7 @@ export default function Header(){
                 <div className="header__userinfo">
                     <h1>{name} {lastname}</h1>
                     <span>mail: {email}</span>
-                    <span>rol: Ejecutivo de ventas</span>
+                    <span>rol: {position}</span>
                 </div>
                 <div className='header__verified'>
                     <img src="/img/icons/verified.svg" alt="Verificado"/>
